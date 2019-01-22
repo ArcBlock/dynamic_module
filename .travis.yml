@@ -1,0 +1,25 @@
+language: elixir
+dist: xenial
+elixir:
+- 1.7.4
+otp_release:
+- 21.1.1
+branches:
+  only:
+  - master
+install:
+- mix local.hex --force
+- mix local.rebar --force
+env:
+- MIX_ENV=test
+before_script: make travis-init
+script: make travis
+before_deploy: make travis-deploy
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: L2EuSToavsVQifhDH1sDW/SPjyfZ0pRAG9aFm6CAjaBtJL5NOV5CSXmPTcDMXdzaPu/WZDHQrsdKLIgDNOgTINJ2wLz/JGfI7DiqNB7CFosJiY1kkYk3smyy5R6P6ZmS/jLqMm/x+J3IIfgCNdUXlljRxN9omYtDPDFNPiqR8D5QD2zKyTIh86F1Asybi5b56x7z+W6dF7tjRK0vtXEzpLbhyJoJfsvdLFJojvYCjtmvF/7s8cV9HXOtbaoUBXx5mgYq1i2l3XfQgyCFf+cxocfrkBQqeJHQy6dEEz1f1bOsT24n7e1KTPrIVt6sV+cVMnkedNHPGbsIsXgmdVSn390cDccOsbz6TLV2DUKPR39rcY5M+ViaYed9K8UnZqZI2tw/n3dAOE4v0u6BJoRYqMxjbkF18kuyfXYDEs9vnix40fd7akhFH3DwT9/0iearvNVXAqdgwE/bn6ZYDRkH5qFeef4d4jXrdfZJjshX3VpIeJIAxEAHMRzTox8FvSrhT6hPwjJg3eUTit/eMw/5vdxnfUniVa5aMMgaQm8kTJaPZ5W05FgJ0U28eIIWaP8mVyX+g5IC2bibq4agvpJG5an348hsHWFbxT9Hz/GF1q9LkhxY3baRWzI7LqP4688WVThAlkxwfcfA77bnO3JVU9CqLNQUvA0DDRr7eOEsPLA=
+  on:
+    repo: ArcBlock/dynamic_module
+    branch: master

@@ -38,7 +38,13 @@ defmodule DynamicModule.MixProject do
 
   defp deps do
     [
-      {:recase, "~> 0.3"}
+      {:recase, "~> 0.3"},
+
+      # test and dev
+      {:credo, "~> 1.0", only: [:dev, :test]},
+      {:dialyxir, "~> 1.0.0-rc.4", only: [:dev], runtime: false},
+      {:ex_doc, "~> 0.19", only: [:dev, :test]},
+      {:pre_commit_hook, "~> 1.2", only: [:dev], runtime: false}
     ]
   end
 

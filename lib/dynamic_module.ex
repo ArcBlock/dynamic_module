@@ -3,6 +3,8 @@ defmodule DynamicModule do
   Generate a new module based on AST.
   """
 
+  alias Mix.Tasks.Format
+
   @doc """
   Generate `.beam` and `.ex` files based on:
 
@@ -78,7 +80,7 @@ defmodule DynamicModule do
             |> String.replace(~r/create([^(]*)\((.*?)\) do/, "create\\1 \\2 do")
 
           File.write!(filename, term)
-          Mix.Tasks.Format.run([filename])
+          Format.run([filename])
 
           [:cyan, "Module [#{mod_name}] is generated. File created at #{filename}."]
           |> IO.ANSI.format()

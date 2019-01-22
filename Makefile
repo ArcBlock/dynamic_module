@@ -7,7 +7,6 @@ init: install
 install:
 	@echo "Install software required for this repo..."
 	@brew install elixir
-	@brew install yamllint
 
 dep:
 	@echo "Install dependencies required for this repo..."
@@ -24,10 +23,6 @@ run:
 test:
 	@echo "Running test suites..."
 	@mix test
-
-lint:
-	@echo "Linting the software..."
-	@yamllint -c .yamllint priv/**/*.yml
 
 travis-init: extract-deps
 	@echo "Initialize software required for travis (normally ubuntu software)"
