@@ -16,11 +16,11 @@ defmodule DynamicModule.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
 
       # Docs
-      name: "Goldorin",
-      source_url: "https://github.com/ArcBlock/goldorin",
-      homepage_url: "https://github.com/ArcBlock/goldorin",
+      name: "DynamicModule",
+      source_url: "https://github.com/ArcBlock/dynamic_module",
+      homepage_url: "https://github.com/ArcBlock/dynamic_module",
       docs: [
-        main: "Goldorin",
+        main: "DynamicModule",
         extras: ["README.md"]
       ]
     ]
