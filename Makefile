@@ -24,7 +24,7 @@ test:
 	@echo "Running test suites..."
 	@mix test
 
-travis-init: extract-deps
+travis-init:
 	@echo "Initialize software required for travis (normally ubuntu software)"
 
 travis: dep test
