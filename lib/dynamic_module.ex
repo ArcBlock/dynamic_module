@@ -76,8 +76,14 @@ defmodule DynamicModule do
             term
             |> Macro.to_string()
             |> String.replace(~r/(\(\s|\s\))/, "")
-            |> String.replace(~r/def([^(]*)\((.*?)\) do/, "def\\1 \\2 do")
-            |> String.replace(~r/create([^(]*)\((.*?)\) do/, "create\\1 \\2 do")
+            |> String.replace(
+              ~r/(def|defp|create|get|post|patch|delete|object|enum|field)([^(]*)\((.*?)\) do/,
+              "\\1\\2 \\3 do"
+            )
+            |> String.replace(
+              ~r/(alias|require|import|pipe|use|plug|forward|field|value|arg)([^(]*)\((.*?)\)\n/,
+              "\\1\\2 \\3\n"
+            )
 
           File.write!(filename, term)
           Format.run([filename])
