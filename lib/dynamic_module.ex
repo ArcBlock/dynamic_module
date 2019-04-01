@@ -3,8 +3,6 @@ defmodule DynamicModule do
   Generate a new module based on AST.
   """
 
-  alias Mix.Tasks.Format
-
   @doc """
   Generate `.beam` and `.ex` files based on:
 
@@ -27,7 +25,8 @@ defmodule DynamicModule do
           ] do
       mod_doc = Keyword.get(opts, :doc, false)
       path = Keyword.get(opts, :path, "")
-      create = Keyword.get(opts, :create, true)
+      create? = Keyword.get(opts, :create, true)
+      format? = Keyword.get(opts, :format, true)
 
       moduledoc =
         quote do
@@ -36,7 +35,7 @@ defmodule DynamicModule do
 
       name = String.to_atom("Elixir.#{mod_name}")
 
-      if create do
+      if create? do
         Module.create(
           name,
           [moduledoc] ++ [preamble] ++ [contents],
@@ -86,7 +85,10 @@ defmodule DynamicModule do
             )
 
           File.write!(filename, term)
-          Format.run([filename])
+
+          if format? do
+            Mix.Tasks.Format.run([filename])
+          end
 
           [:cyan, "Module [#{mod_name}] is generated. File created at #{filename}."]
           |> IO.ANSI.format()
