@@ -27,6 +27,7 @@ defmodule DynamicModule do
       path = Keyword.get(opts, :path, "")
       create? = Keyword.get(opts, :create, true)
       format? = Keyword.get(opts, :format, true)
+      output? = Keyword.get(opts, :output, true)
 
       moduledoc =
         quote do
@@ -90,9 +91,11 @@ defmodule DynamicModule do
             Mix.Tasks.Format.run([filename])
           end
 
-          [:cyan, "Module [#{mod_name}] is generated. File created at #{filename}."]
-          |> IO.ANSI.format()
-          |> IO.puts()
+          if output? do
+            [:cyan, "Module [#{mod_name}] is generated. File created at #{filename}."]
+            |> IO.ANSI.format()
+            |> IO.puts()
+          end
       end
     end
   end
