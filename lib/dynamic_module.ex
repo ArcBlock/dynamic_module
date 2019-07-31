@@ -77,12 +77,12 @@ defmodule DynamicModule do
             |> Macro.to_string()
             |> String.replace(~r/(\(\s|\s\))/, "")
             |> String.replace(
-              ~r/(def|defp|create|get|post|patch|delete|object|enum|field)([^(]*)\((.*?)\) do/,
-              "\\1\\2 \\3 do"
+              ~r/(def|defp|create|get|post|patch|delete|object|enum|field|schema)\((.*?)\) do/,
+              "\\1 \\2 do"
             )
             |> String.replace(
-              ~r/(alias|require|import|pipe|use|plug|forward|field|value|arg)([^(]*)\((.*?)\)\n/,
-              "\\1\\2 \\3\n"
+              ~r/(alias|require|import|pipe|use|plug|forward)\((.*?)\)\n/,
+              "\\1 \\2\n"
             )
 
           File.write!(filename, term)
