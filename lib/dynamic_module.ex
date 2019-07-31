@@ -77,7 +77,7 @@ defmodule DynamicModule do
             |> Macro.to_string()
             |> String.replace(~r/(\(\s|\s\))/, "")
             |> String.replace(
-              ~r/(def|defp|create|get|post|patch|delete|object|enum|field|schema)\((.*?)\) do/,
+              ~r/(def|defp|defmodule|create|get|post|patch|delete|object|enum|field|schema)\((.*?)\) do/,
               "\\1 \\2 do"
             )
             |> String.replace(

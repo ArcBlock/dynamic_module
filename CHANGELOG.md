@@ -1,3 +1,6 @@
+## 0.1.7 (July 31, 2019)
+  - fix generated code format issue (defmodule)
+
 ## 0.1.6 (July 31, 2019)
   - fix generated code format issue
 
