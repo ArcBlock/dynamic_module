@@ -1,3 +1,6 @@
+## 0.1.9 (July 31, 2019)
+  - fix generated code format issue (drop)
+
 ## 0.1.8 (July 31, 2019)
   - fix generated code format issue (field/add)
 
