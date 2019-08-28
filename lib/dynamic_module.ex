@@ -77,11 +77,11 @@ defmodule DynamicModule do
             |> Macro.to_string()
             |> String.replace(~r/(\(\s|\s\))/, "")
             |> String.replace(
-              ~r/(def|defp|defmodule|create|get|post|patch|delete|object|enum|schema)\((.*?)\) do/,
+              ~r/(def|defp|defmodule|create|create_if_not_exists|get|post|patch|delete|object|enum|schema)\((.*?)\) do/,
               "\\1 \\2 do"
             )
             |> String.replace(
-              ~r/(alias|require|import|pipe|use|plug|forward|field|add|timestamps|drop)\((.*?)\)\n/,
+              ~r/(alias|require|import|pipe|use|plug|forward|field|has_one|has_many|add|timestamps|drop|drop_if_exists)\((.*?)\)\n/,
               "\\1 \\2\n"
             )
 

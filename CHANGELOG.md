@@ -1,3 +1,6 @@
+## 0.1.10 (August 27, 2019)
+  - fix generated code format issue (create_if_missing)
+
 ## 0.1.9 (July 31, 2019)
   - fix generated code format issue (drop)
 
